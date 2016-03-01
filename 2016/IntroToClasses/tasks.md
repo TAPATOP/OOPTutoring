@@ -30,8 +30,8 @@
 
 # Задача 2
 ## 1. Дефинирайте клас Person.
-1. член данни char* name, int age, bool gender
-Да се реализират:
+1. Член данни char* name, int age, bool gender
+2. Да се реализират:
   1. Конструктор по подразбиране (default constructor), който задава стойности nullptr, 0, 0 съответно за name, age и gender
   2. Конструктор който Person(char* name, int age, bool gender)
   3. Деструктор

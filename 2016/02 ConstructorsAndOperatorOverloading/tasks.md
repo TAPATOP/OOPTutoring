@@ -62,16 +62,16 @@ private:
 class Person {
 public:
   Person();
-  Person(string name);
-  Person(string name, int age);
+  Person(std::string name);
+  Person(std::string name, int age);
 private:
-  string m_name, int age;
+  std::string m_name, int age;
 };
 ```
 Да кажем, че искаме името на човек винаги да е с малки букви. Виждаме, че името присъства във всички конструктори, следователно ще трябва да пишем във всеки конструктор код за преобразуване на името в малки букви. За да избегнем повтарящи се действия в конструкторите ползваме constructor chaining.
 
 ```c++
-  Person::Person(string name, int age)
+  Person::Person(std::string name, int age)
     : m_age{age} {
       int l = name.size();
       for(int i = 0; i < l; i++) {
@@ -80,8 +80,8 @@ private:
       m_name = name;
     }
   Person::Person(): Person("", 0) {};
-  Person::Person(string s): Person(s, 0) {};
-  Person::Person(string s, int age): Person(s, age) {};
+  Person::Person(std::string s): Person(s, 0) {};
+  Person::Person(std::string s, int age): Person(s, age) {};
 ```
 
 ## 3. Friend Function
@@ -92,9 +92,9 @@ private:
 class Person {
 public:
   Person();
-  Person(string name);
-  Person(string name, int age);
-  friend void ChangeNick(Person p, string newNick);
+  Person(std::string name);
+  Person(std::string name, int age);
+  friend void ChangeNick(Person p, std::string newNick);
 private:
   string m_name, m_nickname;
   int m_age;
@@ -102,7 +102,7 @@ private:
 
 ...
 
-void function ChangeNick(Person p, string newNick) {
+void function ChangeNick(Person p, std::string newNick) {
   p.m_nickname = newNick;
 }
 
@@ -116,6 +116,8 @@ SetNickname(pesho, "pepi");
 
 ```c++
 #include<cstring>
+
+...
 
 namespace myString {
   char tolower(char c) {
@@ -136,12 +138,13 @@ myString::tolower('A');
 #ifndfe PERSON
 #define PERSON
 
+#include<cstring>
+
 class Person {
 public:
   Person();
-  Person(string name);
-  Person(string name, int age);
-  friend void ChangeNick(Person p, string newNick);
+  Person(std::string name);
+  Person(std::string name, int age);
 private:
   string m_name;
   int m_age;
@@ -154,7 +157,7 @@ private:
 ```c++
   #include <cstring>
   #include "Person.h"
-  Person::Person(string name, int age)
+  Person::Person(std::string name, int age)
     : m_age{age} {
       int l = name.size();
       for(int i = 0; i < l; i++) {
@@ -163,8 +166,8 @@ private:
       m_name = name;
     }
   Person::Person(): Person("", 0) {};
-  Person::Person(string s): Person(s, 0) {};
-  Person::Person(string s, int age): Person(s, age) {};
+  Person::Person(std::string s): Person(s, 0) {};
+  Person::Person(std::string s, int age): Person(s, age) {};
 ```
 ## Важно
 

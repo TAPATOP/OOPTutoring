@@ -134,7 +134,7 @@ myString::tolower('A');
 
 .h
 ```c++
-#ifndfe PERSON
+#ifndef PERSON
 #define PERSON
 
 #include<cstring>
@@ -166,7 +166,6 @@ private:
     }
   Person::Person(): Person("", 0) {};
   Person::Person(std::string s): Person(s, 0) {};
-  Person::Person(std::string s, int age): Person(s, age) {};
 ```
 ## Важно
 

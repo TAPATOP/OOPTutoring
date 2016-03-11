@@ -73,15 +73,14 @@ private:
 ```c++
   Person::Person(std::string name, int age)
     : m_age{age} {
-      int l = name.size();
-      for(int i = 0; i < l; i++) {
+      int s = name.size();
+      for(int i = 0; i < s; i++) {
         name[i] = std::tolower(name[i]);
       }
       m_name = name;
     }
   Person::Person(): Person("", 0) {};
   Person::Person(std::string s): Person(s, 0) {};
-  Person::Person(std::string s, int age): Person(s, age) {};
 ```
 
 ## 3. Friend Function

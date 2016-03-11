@@ -127,6 +127,7 @@ namespace myString {
 
 ...
 myString::tolower('A');
+std::tolower('A');
 ```
 ## 4. File Splitting
 

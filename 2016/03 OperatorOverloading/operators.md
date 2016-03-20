@@ -36,72 +36,72 @@ vector2d operator+ (const vector2d &a, const vector2d &b) {
 ## Increment/Decrement
 Това са съответно префиксните и постфиксните оператори: ++ и --. Математически не е дефинирано какво би трябвало да прави ++ за вектор, но за примера ще приемем, че увеличава с 1 всеки атрибут.
 ```c++
-	//prefix
-	vector2d& vector2d::operator++() {
-		m_x++;
-		m_y++;
-		return *this;
-	}
-	//postfix
-	vector2d vector2d::operator++(int) {
-		vector2d temp = *this;
-		m_x++;
-		m_y++;
-		return temp;
-	}
+//prefix
+vector2d& vector2d::operator++() {
+	m_x++;
+	m_y++;
+	return *this;
+}
+//postfix
+vector2d vector2d::operator++(int) {
+	vector2d temp = *this;
+	m_x++;
+	m_y++;
+	return temp;
+}
 ```
 
 ## Output/Input
 Можем да предефинираме операторите на потоците за вход и изход >> и <<.
 ```c++
-	ostream& operator<< (ostream &out, vector2d &v) {
-		out<<"("<<v.m_x<<" "<<v.m_y<<")";
-		return out;
-	}
-	istream& operator<< (istream &in, vector2d &v) {
-		in>>v.m_x>>v.m_y;
-		return in;
-	}
+ostream& operator<< (ostream &out, vector2d &v) {
+	out<<"("<<v.m_x<<" "<<v.m_y<<")";
+	return out;
+}
+istream& operator<< (istream &in, vector2d &v) {
+	in>>v.m_x>>v.m_y;
+	return in;
+}
 ```
 ##Subscript
 Можем да предефинираме оператора [].
 ```c++
-	class arr{
-	public:
-		int& operator[] (int index);
-	private:
-		int m_arr[10];
-	};
-	
-	...
+class arr{
+public:
+	int& operator[] (int index);
+private:
+	int m_arr[10];
+};
 
-	int& arr::operator[] (int index) {
-		if(i >= 0 && i <= 9) {
-			return m_arr[index]
-		} else {
-			//thorw some kind of exception
-		}
+...
+
+int& arr::operator[] (int index) {
+	if(i >= 0 && i <= 9) {
+		return m_arr[index]
+	} else {
+		//thorw some kind of exception
 	}
-	
+}
+
 ```
 Важно е да се отбележи, че [][] не е оператор, а са две последователни извиквания на оператора [] върху различни обекти. Това прави предефинирането на оператора за многомерни матрици доста неудобен.
 
 ##Parenthesis call operator
 Оператора () може да приема колкото и да е на брой параметри. Това го прави изключително удобен за доста работи, примерно достъп до елементите на матрица:
 ```c++
-	class matrix{
-	public:
-		int& operator() (int indexR, int indexC);
-	private:
-		int m_matrix[10][10];
-	};
-	
-	...
+class matrix{
+public:
+	int& operator() (int indexR, int indexC);
+private:
+	int m_matrix[10][10];
+};
 
-	int& arr::operator() (int indexR, int indexC) {
-		return m_matrix[indexR][indexC]
-	}
-	
+...
+
+int& arr::operator() (int indexR, int indexC) {
+	return m_matrix[indexR][indexC]
+}
+
 ```
 
 ## Задача

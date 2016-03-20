@@ -58,7 +58,7 @@ ostream& operator<< (ostream &out, vector2d &v) {
 	out<<"("<<v.m_x<<" "<<v.m_y<<")";
 	return out;
 }
-istream& operator<< (istream &in, vector2d &v) {
+istream& operator>> (istream &in, vector2d &v) {
 	in>>v.m_x>>v.m_y;
 	return in;
 }

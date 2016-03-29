@@ -1,4 +1,4 @@
-#include "string.h"
+#include "String.h"
 
 using namespace std;
 
@@ -85,13 +85,8 @@ namespace MString {
         return std::move(s);
     }
 
-    String& String::operator+= (const String& other) {
-        uint new_size = m_size + other.m_size, old_size = m_size;
-        char *old = new char[old_size];
-        String::copy_char_arr(m_string, old, 0, old_size);
-        resize(new_size);
-        String::copy_char_arr(old, m_string, 0, old_size);
-        String::copy_char_arr(other.m_string, m_string, old_size, other.m_size);
+    String& String::operator+= (const String& other) { 
+    	*this = *this + other;
         return *this;
     }
 
@@ -101,7 +96,9 @@ namespace MString {
     }
 
     bool operator!= (const String& a, const String& b) {
-        return !(a==b);
+        if(String::compare(a,b)) return true;
+        return false;
+ 
     }
 
     short String::compare(const String& a, const String& b) {

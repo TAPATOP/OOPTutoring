@@ -30,9 +30,14 @@ class Person {
         void SetEGN(int EGN) {
             m_EGN = EGN;
         }
+        void f() {
+            cout<<ID<<endl;
+        }
+    protected:
+        int ID=123;
 };
 
-class Student : public Person {
+class Student : protected Person {
     private:
         int m_FN=-1;
     public: 
@@ -45,9 +50,13 @@ class Student : public Person {
         int GetFN() {
             return m_FN;
         }
+        void f() {
+            cout<<ID<<endl;
+        }
 };
 
 int main() {
     Student a("Pesho", 1, 2, 3);
-    cout<<"Name: "<<a.GetName()<<" Age: "<<a.GetAge()<<" EGN: "<<a.GetEGN()<<" FN: "<<a.GetFN()<<endl;
+    Person b("Gosho", 4, 5);
+    //cout<<"Name: "<<a.GetName()<<" Age: "<<a.GetAge()<<" EGN: "<<a.GetEGN()<<" FN: "<<a.GetFN()<<endl;
 }
